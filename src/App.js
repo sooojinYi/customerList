@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import CreateCustomer from './components/CreateCustomer';
+import CustomerList from './components/CustomerList';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import DetailCustomer from './components/DetailCustomer';
+import EditCustomer from './components/EditCustomer';
+import {Route, Routes} from 'react-router-dom'
 
 function App() {
+  const title = "그린고객관리";
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header title={title} />
+      <div className='contents'>
+        <Routes>
+          <Route path="/" element={<CustomerList />} />
+          <Route path="/create" element={<CreateCustomer />} />
+          <Route path="/customer/:id" element={<DetailCustomer />} />
+          <Route path="/update" element={<EditCustomer />}/>
+        </Routes>
+      </div>
+      <Footer title={title} />
     </div>
   );
 }
